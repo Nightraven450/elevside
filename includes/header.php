@@ -32,12 +32,12 @@ require_once("includes/settings.php");
             }
             ?>
         </button>
-        <button onclick="location.href='index.php?p=3&page=students'">
+        <button onclick="location.href='index.php?p=3&page=lærer'">
             <?php
             if (isset($_GET["p"]) && $_GET["p"] == 3) {
-                echo "<strong>students</strong>";
+                echo "<strong>Lærer</strong>";
             } else {
-                echo "students";
+                echo "Lærer";
             }
             ?>
         </button>
