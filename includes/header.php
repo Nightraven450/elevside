@@ -23,12 +23,12 @@ require_once("includes/settings.php");
             }
             ?>
         </button>
-        <button onclick="location.href='index.php?p=2&page=elev'">
+        <button onclick="location.href='index.php?p=2&page=karakter'">
             <?php
             if (isset($_GET["p"]) && $_GET["p"] == 2) {
-                echo "<strong>Elev</strong>";
+                echo "<strong>Karakter</strong>";
             } else {
-                echo "Elev";
+                echo "Karakter";
             }
             ?>
         </button>
