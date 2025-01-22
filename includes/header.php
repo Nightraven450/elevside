@@ -9,7 +9,7 @@ require_once("includes/settings.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="styles/footerstyle.css">
+    <link rel="stylesheet" href="styles/lærer.css">
 </head>
 
 <body>
@@ -38,6 +38,14 @@ require_once("includes/settings.php");
                 echo "<strong>students</strong>";
             } else {
                 echo "students";
+            }
+            ?>
+             <button onclick="location.href='index.php?p=4&page=lærer'">
+            <?php
+            if (isset($_GET["p"]) && $_GET["p"] == 4) {
+                echo "<strong>lærer</strong>";
+            } else {
+                echo "lærer";
             }
             ?>
         </button>
