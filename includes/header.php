@@ -40,7 +40,6 @@ require_once("includes/settings.php");
                 echo "Lærer";
             }
             ?>
-        </button>
         <button style="margin-left: auto;"
             onclick="location.href='<?php echo isset($_SESSION['login']) && $_SESSION['login'] ? 'logout.php' : '../pages/login.php'; ?>'">
             <?php
@@ -52,10 +51,13 @@ require_once("includes/settings.php");
             ?>
         </button>
     </div>
-    <div class="user-info" style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+    <div class="user-info" style="margin-left: auto;">
         <?php if (isset($_SESSION['login']) && $_SESSION['login']): ?>
             <p>Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?></p>
         <?php endif; ?>
     </div>
+
+
 </body>
+
 </html>
