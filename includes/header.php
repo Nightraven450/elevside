@@ -40,15 +40,6 @@ require_once("includes/settings.php");
                 echo "Lærer";
             }
             ?>
-             <button onclick="location.href='index.php?p=4&page=lærer'">
-            <?php
-            if (isset($_GET["p"]) && $_GET["p"] == 4) {
-                echo "<strong>lærer</strong>";
-            } else {
-                echo "lærer";
-            }
-            ?>
-        </button>
         <button style="margin-left: auto;"
             onclick="location.href='<?php echo isset($_SESSION['login']) && $_SESSION['login'] ? 'logout.php' : '../pages/login.php'; ?>'">
             <?php
