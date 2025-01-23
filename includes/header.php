@@ -40,6 +40,7 @@ require_once("includes/settings.php");
                 echo "Lærer";
             }
             ?>
+        </button>
         <button style="margin-left: auto;"
             onclick="location.href='<?php echo isset($_SESSION['login']) && $_SESSION['login'] ? 'logout.php' : '../pages/login.php'; ?>'">
             <?php
@@ -56,8 +57,5 @@ require_once("includes/settings.php");
             <p>Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?></p>
         <?php endif; ?>
     </div>
-
-
 </body>
-
 </html>
