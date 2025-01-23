@@ -40,7 +40,13 @@ require_once("includes/settings.php");
                 echo "Lærer";
             }
             ?>
-        <button style="margin-left: auto;"
+        </button>
+
+        <?php if (isset($_SESSION['login']) && $_SESSION['login']): ?>
+            <span style="color: white; margin-left: auto; margin-top: 10px;">Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+        <?php endif; ?>
+        <!-- dont put any button after this -->
+        <button style="margin-left: 10px;"
             onclick="location.href='<?php echo isset($_SESSION['login']) && $_SESSION['login'] ? 'logout.php' : '../pages/login.php'; ?>'">
             <?php
             if (isset($_SESSION['login']) && $_SESSION['login']) {
@@ -50,14 +56,8 @@ require_once("includes/settings.php");
             }
             ?>
         </button>
+        
     </div>
-    <div class="user-info" style="margin-left: auto;">
-        <?php if (isset($_SESSION['login']) && $_SESSION['login']): ?>
-            <p>Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?></p>
-        <?php endif; ?>
-    </div>
-
-
 </body>
 
 </html>
