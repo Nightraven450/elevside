@@ -18,7 +18,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         die('Connection failed: ' . $mysqli->connect_error);
     }
 
-    $stmt = $mysqli->prepare("SELECT `email`, `password` FROM `users` WHERE `email` = ?");
+    // Updated SQL query to include username
+    $stmt = $mysqli->prepare("SELECT `email`, `password`, `username` FROM `users` WHERE `email` = ?");
     $stmt->bind_param("s", $form_email);  
     $stmt->execute();  
     $result = $stmt->get_result();
