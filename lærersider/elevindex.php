@@ -17,8 +17,8 @@ $user = 'root'; // Database username
 $pass = ''; // Database password
 $database = 'elevside'; // Database name
 
-require_once("includes/settings.php");
-require_once("pages/Karakter.php");
+require_once("../includes/settings.php");
+require_once("../pages/Karakter.php");
 
 $feedback = ""; // Initialize feedback as empty
 
