@@ -131,5 +131,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         <?php if (!empty($feedback)) echo $feedback; ?>
     </div>
-</body>
-</html>
