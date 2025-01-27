@@ -3,7 +3,6 @@ session_start();  // Initialize session
 $feedback = '';  // Initialize feedback message
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
-
     $host = '127.0.0.1';
     $user = 'root';
     $pass = '';
@@ -18,7 +17,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         die('Connection failed: ' . $mysqli->connect_error);
     }
 
-    // Updated SQL query to include username
     $stmt = $mysqli->prepare("SELECT `email`, `password`, `username` FROM `users` WHERE `email` = ?");
     $stmt->bind_param("s", $form_email);  
     $stmt->execute();  
@@ -28,13 +26,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $user = $result->fetch_object();  
         $db_password = $user->password;
 
-        // Directly compare the entered password with the stored password
         if ($form_password === $db_password) {
-            // Set session variables
             $_SESSION['login'] = true;
-            $_SESSION['username'] = $user->username;  // Store username in session
+            $_SESSION['username'] = $user->username;  
             header("Location: http://localhost:3000/index.php?p=2&page=main");
-            exit(); // Ensure no further code is executed after redirection
+            exit(); 
         } else {
             $feedback = 'Incorrect password!';
         }
@@ -52,19 +48,22 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
-    <title>Login</title>
+    <title>Log in</title>
 </head>
 <body>
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>Log in</h2>
         <?php if ($feedback): ?>
             <div class="feedback"><?php echo $feedback; ?></div>
         <?php endif; ?>
         <form method="POST" action="">
-            <input type="email" name="email" placeholder="Email" required>
+            <input type="email" name="email" placeholder="your_email@gmail.com" required>
             <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+            <div class="button-container">
+                <button type="submit">Log in</button>
+            </div>
         </form>
+        <p>or, <a href="#">sign up</a></p>
     </div>
 </body>
 </html>

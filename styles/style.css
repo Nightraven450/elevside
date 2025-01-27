@@ -2,9 +2,56 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: #1a1a1a; /* Dark background */
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    background-color: #ffffff; /* White background for the container */
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for input */
+    margin: 10px 0; /* Margin for spacing */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.button-container {
+    width: 100%; /* Full width */
+}
+
+.button-container button {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for button */
+    background-color: #00bcd4; /* Teal button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.button-container button:hover {
+    background-color: #0097a7; /* Darker shade on hover */
+}
+
+.feedback {
+    color: red; /* Red color for feedback */
+    margin: 10px 0; /* Margin for spacing */
 }
 
 html {
+    height: 100vh;
+    scrollbar-width: thin;
     height: 100vh;
     scrollbar-width: thin;
 }
