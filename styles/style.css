@@ -125,3 +125,18 @@ html {
 .nav button:hover {
     color: #e0e0e0;
 }
+
+.return {
+    height: 20px;
+    width: 100px;
+    border: none;
+    background-color: #0097a7;
+    border-end-end-radius: 10%;
+    color: white;
+    cursor:pointer;
+    transition: background-color 0.3s;
+}
+
+.return:hover {
+    background-color: #005f69;
+}

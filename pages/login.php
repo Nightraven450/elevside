@@ -51,6 +51,9 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     <title>Log in</title>
 </head>
 <body>
+<div>
+        <button class="return" onclick="window.close(); window.open('/start.php')">Go to Start</button>
+    </div>
     <div class="login-container">
         <h2>Log in</h2>
         <?php if ($feedback): ?>
