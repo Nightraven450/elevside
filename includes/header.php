@@ -59,5 +59,4 @@ require_once("includes/settings.php");
         
     </div>
 </body>
-
 </html>
