@@ -1,0 +1,53 @@
+body {
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+.nav {
+    background-color: #544c9c;
+    padding: 10px;
+}
+
+.nav button {
+    padding: 10px 15px;
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav button:hover {
+    color: #e0e0e0;
+}
+.form-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    margin: 50px auto; /* Center the form container */
+}
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px 8px 8px 8px; /* Rounded top corners */
+}
+label {
+    display: block; /* Ensure labels are block elements */
+    margin-bottom: 5px; /* Space between label and input */
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+    width: 94%; /* Make inputs full width */
+    padding: 7px; /* Add padding for better appearance */
+    margin-bottom: 15px; /* Space between inputs */
+    border: 1px solid #ccc; /* Add border for visibility */
+    border-radius: 4px; /* Rounded corners */
+}

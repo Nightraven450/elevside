@@ -1,6 +1,6 @@
 <?php
 // Report simple running errors
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+error_reporting(error_level: E_ERROR | E_WARNING | E_PARSE);
 
 class Student {
     public $name;
@@ -52,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Execute the statement
             if ($stmt->execute()) {
-                // Redirect to the same page to prevent resubmission
-                header("Location: elevindex.php");
+                // Redirect to the correct page to prevent resubmission
+                header("Location: pages/elevindex.php");
                 exit;
             } else {
                 $feedback = "<span style='color:red;'>Error: " . $stmt->error . "</span>";
@@ -66,37 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Student</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-        .form-container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            padding: 20px;
-            position: relative;
-        }
-        .header {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            border-radius: 8px 8px 0 0; /* Rounded top corners */
-        }
-    </style>
     <script>
         function generateUsername() {
             const nameInput = document.getElementById('name').value;
@@ -110,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="form-container">
-        <div class="header">Add Student</div>
+        <div class="header">tilføj elev</div>
         <form method="POST" action="">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -131,3 +100,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         <?php if (!empty($feedback)) echo $feedback; ?>
     </div>
+</body>
+</html>
