@@ -57,13 +57,12 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             <div class="feedback"><?php echo $feedback; ?></div>
         <?php endif; ?>
         <form method="POST" action="">
-            <input type="email" name="email" placeholder="your_email@gmail.com" required>
+            <input type="email" name="email" placeholder="email" required>
             <input type="password" name="password" placeholder="Password" required>
             <div class="button-container">
                 <button type="submit">Log in</button>
             </div>
         </form>
-        <p>or, <a href="#">sign up</a></p>
     </div>
 </body>
 </html>

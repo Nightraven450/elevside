@@ -2,7 +2,6 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: #1a1a1a; /* Dark background */
 }
 
 .login-container {
@@ -20,7 +19,7 @@ body {
 input[type="email"], input[type="password"] {
     width: 100%; /* Full width */
     padding: 10px; /* Padding for input */
-    margin: 10px 0; /* Margin for spacing */
+    margin: 5px 0; /* Margin for spacing */
     border: 1px solid #ccc; /* Border */
     border-radius: 5px; /* Rounded corners */
 }
@@ -30,8 +29,9 @@ input[type="email"], input[type="password"] {
 }
 
 .button-container button {
-    width: 100%; /* Full width */
+    width: 106%; /* Full width */
     padding: 10px; /* Padding for button */
+    margin: 10px 0;
     background-color: #00bcd4; /* Teal button color */
     color: white; /* Text color */
     border: none; /* No border */
