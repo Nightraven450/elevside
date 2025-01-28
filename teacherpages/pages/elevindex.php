@@ -42,40 +42,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Create connection
         $mysqli = new mysqli($host, $user, $pass, $database);
 
-        // Check for connection errors
-        if ($mysqli->connect_error) {
-            $feedback = "<span style='color:red;'>Database connection failed: " . $mysqli->connect_error . "</span>";
-        } else {
-            // Prepare and bind to the correct table
-            $stmt = $mysqli->prepare("INSERT INTO users (username, email, password, name, age) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssi", $username, $email, $password, $student->name, $student->age);
+    // Check for connection errors
+    if ($mysqli->connect_error) {
+    $feedback = "<span style='color:red;'>Database connection failed: " . $mysqli->connect_error . "</span>";
+    } else {
+    // Check if username or email already exists
+    $checkStmt = $mysqli->prepare("SELECT COUNT(*) FROM users WHERE username = ? OR email = ?");
+    $checkStmt->bind_param("ss", $username, $email);
+    $checkStmt->execute();
+    $checkStmt->bind_result($count);
+    $checkStmt->fetch();
+    $checkStmt->close();
+}
 
-            // Execute the statement
-            if ($stmt->execute()) {
-                // Redirect to the correct page to prevent resubmission
-                header("Location: pages/elevindex.php");
-                exit;
+            if ($count > 0) {
+                $feedback = "<span style='color:red;'>Username or email already exists. Please choose another.</span>";
             } else {
-                $feedback = "<span style='color:red;'>Error: " . $stmt->error . "</span>";
-            }
+                // Prepare and bind to the correct table
+                $stmt = $mysqli->prepare("INSERT INTO users (username, email, password, name, age) VALUES (?, ?, ?, ?, ?)");
+                $stmt->bind_param("ssssi", $username, $email, $password, $student->name, $student->age);
 
-            // Close connections
-            $stmt->close();
+                // Execute the statement
+                if ($stmt->execute()) {
+                    // Redirect to the correct page to prevent resubmission
+                    header("Location: index.php?p=1&page=elevindex");
+                    exit;
+                } else {
+                    $feedback = "<span style='color:red;'>Error: " . $stmt->error . "</span>";
+                }
+
+                // Close connections
+                $stmt->close();
+            }
             $mysqli->close();
         }
     }
-}
+
 ?>
-    <script>
-        function generateUsername() {
-            const nameInput = document.getElementById('name').value;
-            const usernameField = document.getElementById('username');
-            const randomNumbers = Math.floor(Math.random() * 10) + '' + Math.floor(Math.random() * 10) + '' + Math.floor(Math.random() * 10);
-            const username = nameInput.replace(/\s+/g, '_').toLowerCase() + randomNumbers;
-            usernameField.value = username;
-            document.getElementById('email').value = username + '@gmail.com';
-        }
-    </script>
+<script>
+    function generateUsername() {
+        const nameInput = document.getElementById('name').value;
+        const usernameField = document.getElementById('username');
+        const randomNumbers = Math.floor(Math.random() * 10) + '' + Math.floor(Math.random() * 10) + '' + Math.floor(Math.random() * 10);
+        const username = nameInput.replace(/\s+/g, '_').toLowerCase() + randomNumbers;
+        usernameField.value = username;
+        document.getElementById('email').value = username + '@gmail.com';
+    }
+</script>
 </head>
 <body>
     <div class="form-container">
@@ -88,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="email" id="email" name="email" required>
             <br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="text" id="password" name="password" required>
             <br>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required oninput="generateUsername()">

@@ -10,12 +10,12 @@
 
 <body>
     <div class="nav">
-        <button onclick="location.href='index.php?p=1&page=main'">
+        <button onclick="location.href='index.php?p=1&page=elevindex'">
             <?php
             if (isset($_GET["p"]) && $_GET["p"] == 1) {
-                echo "<strong>Main</strong>";
+                echo "<strong>Elevindex</strong>";
             } else {
-                echo "Main";
+                echo "Elevindex";
             }
             ?>
         </button>
