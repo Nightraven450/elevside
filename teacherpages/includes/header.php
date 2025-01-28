@@ -37,4 +37,13 @@
             }
             ?>
         </button>
+        <button onclick="location.href='index.php?p=4&page=elever'">
+            <?php
+            if (isset($_GET["p"]) && $_GET["p"] == 4) {
+                echo "<strong>Elever</strong>";
+            } else {
+                echo "Elever";
+            }
+            ?>
+        </button>
     </div>
