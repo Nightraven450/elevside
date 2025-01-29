@@ -1,6 +1,7 @@
 <?php
+
 // Report simple running errors
-error_reporting(error_level: E_ERROR | E_WARNING | E_PARSE);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 class Student {
     public $name;
@@ -26,10 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'] ?? '';
     $age = $_POST['age'] ?? '';
 
-    // Generate username and email
-    $username = strtolower(str_replace(' ', '_', $name));
-    $random_numbers = rand(0, 10) . rand(0, 10) . rand(0, 10);
-    $username .= $random_numbers;
+    // Generate base username
+    $base_username = strtolower(str_replace(' ', '_', $name));
+    
+    // Check if username already exists
+    $checkStmt = $mysqli->prepare("SELECT username FROM users WHERE username LIKE CONCAT(?, '%')");
+    $checkStmt->bind_param("s", $base_username);
+    $checkStmt->execute();
+    $checkStmt->store_result();
+    
+    if ($checkStmt->num_rows > 0) {
+        // If a username exists, use the existing one
+        $username = $base_username . rand(0, 999); // Append random numbers to avoid collision
+    } else {
+        // If no username exists, create a new one
+        $username = $base_username . rand(0, 999); // Append random numbers
+    }
     $email = $username . '@gmail.com';
     $password = $_POST['password'] ?? '';
 
@@ -39,8 +52,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $student = new Student($name, $age);
         
-        // Create connection
-        $mysqli = new mysqli($host, $user, $pass, $database);
+    // Create connection
+    $mysqli = new mysqli($host, $user, $pass, $database);
+    
+    // Check for connection errors
+    if ($mysqli->connect_error) {
+        die("<span style='color:red;'>Database connection failed: " . $mysqli->connect_error . "</span>");
+    }
 
     // Check for connection errors
     if ($mysqli->connect_error) {
