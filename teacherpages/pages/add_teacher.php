@@ -1,8 +1,4 @@
 <?php
-session_start(); // Ensure session is started
-
-include_once("../includes/header.php"); // Include the header for navigation
-
 // Database connection settings
 $host = '127.0.0.1'; // Database host
 $user = 'root'; // Database username
@@ -14,7 +10,7 @@ $feedback = ""; // Initialize feedback as empty
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'] ?? '';
     $subject = $_POST['subject'] ?? '';
-    $phone = $_POST['phone'] ?? '';
+    $mobil = $_POST['mobil'] ?? '';
     $image = $_POST['image'] ?? ''; // Assuming image is uploaded or provided as a URL
 
     // Validate input
@@ -29,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $feedback = "<span style='color:red;'>Database connection failed: " . $mysqli->connect_error . "</span>";
         } else {
             // Prepare and bind to the correct table
-            $stmt = $mysqli->prepare("INSERT INTO teachers (name, subject, phone, image) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $name, $subject, $phone, $image);
+            $stmt = $mysqli->prepare("INSERT INTO teachers (name, subject, mobil, image) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $name, $subject, $mobil, $image);
 
             // Execute the statement
             if ($stmt->execute()) {
@@ -53,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/style.css"> <!-- Link to the correct CSS file -->
 </head>
 <body>
 
