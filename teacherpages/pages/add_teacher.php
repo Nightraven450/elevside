@@ -57,9 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="phone">Phone:</label>
             <input type="text" id="phone" name="phone" required>
             <br>
-            <label for="image">Image URL:</label>
-            <input type="text" id="image" name="image">
-            <br>
             <input type="submit" value="Add Teacher">
         </form>
         <?php if (!empty($feedback)) echo $feedback; ?>
