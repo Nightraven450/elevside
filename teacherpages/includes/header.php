@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/lærer.css">
 </head>
 
 <body>
@@ -35,6 +34,15 @@
                 echo "<strong>Lærer</strong>";
             } else {
                 echo "Lærer";
+            }
+            ?>
+        </button>
+        <button onclick="location.href='index.php?p=4&page=elever'">
+            <?php
+            if (isset($_GET["p"]) && $_GET["p"] == 4) {
+                echo "<strong>Elever</strong>";
+            } else {
+                echo "Elever";
             }
             ?>
         </button>
