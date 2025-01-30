@@ -55,56 +55,40 @@ $result = $conn->query($sql);
         <div id="gradeInput" style="display:none;">
             <h2>Add Grades for <span id="selectedStudent"></span></h2>
             <div class="subject-input">
-                <label>Danish Language (Dansk):</label>
+                <label>Dansk:</label>
                 <input type="number" id="grade_danish" placeholder="Enter grade">
             </div>
             <div class="subject-input">
-                <label>Mathematics (Matematik):</label>
+                <label>Matematik:</label>
                 <input type="number" id="grade_math" placeholder="Enter grade">
             </div>
             <div class="subject-input">
-                <label>English Language (Engelsk):</label>
+                <label>Engelsk:</label>
                 <input type="number" id="grade_english" placeholder="Enter grade">
             </div>
             <div class="subject-input">
-                <label>Science (Natur/teknologi):</label>
+                <label>Fysik/kemi:</label>
                 <input type="number" id="grade_science" placeholder="Enter grade">
             </div>
             <div class="subject-input">
-                <label>History (Historie):</label>
+                <label>Historie:</label>
                 <input type="number" id="grade_history" placeholder="Enter grade">
             </div>
             <div class="subject-input">
-                <label>Geography (Geografi):</label>
+                <label>Geografi:</label>
                 <input type="number" id="grade_geography" placeholder="Enter grade">
             </div>
             <div class="subject-input">
-                <label>Physical Education (Idræt):</label>
+                <label>Idræt:</label>
                 <input type="number" id="grade_pe" placeholder="Enter grade">
             </div>
             <div class="subject-input">
-                <label>Music (Musik):</label>
-                <input type="number" id="grade_music" placeholder="Enter grade">
-            </div>
-            <div class="subject-input">
-                <label>Art (Billedkunst):</label>
-                <input type="number" id="grade_art" placeholder="Enter grade">
-            </div>
-            <div class="subject-input">
-                <label>Religious Education (Kristendom):</label>
+                <label>Kristendom:</label>
                 <input type="number" id="grade_religion" placeholder="Enter grade">
             </div>
             <div class="subject-input">
-                <label>Social Studies (Samfundsfag):</label>
+                <label>Samfundsfag:</label>
                 <input type="number" id="grade_social" placeholder="Enter grade">
-            </div>
-            <div class="subject-input">
-                <label>Technology (Teknologi):</label>
-                <input type="number" id="grade_technology" placeholder="Enter grade">
-            </div>
-            <div class="subject-input">
-                <label>Home Economics (Huslig økonomi):</label>
-                <input type="number" id="grade_home_economics" placeholder="Enter grade">
             </div>
             <button onclick="submitGrades()">Submit Grades</button>
             <button onclick="deselectStudent()">Cancel/Deselect</button>
