@@ -4,7 +4,7 @@ body {
     padding: 0;
     height: 100vh;
     width: 100vw;
-    overflow: hidden; /* Prevent scroll bars */
+    overflow-x: hidden;
 }
 .nav {
     background-color: #544c9c;
