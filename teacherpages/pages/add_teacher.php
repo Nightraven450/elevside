@@ -13,11 +13,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mobil = $_POST['mobil'] ?? ''; // Updated variable name
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
+    $imagePath = ''; // Initialize image path
 
     // Validate input
     if (empty($name) || empty($subject) || empty($mobil) || empty($email) || empty($password)) {
         $feedback = "<span style='color:red;'>Please fill in all fields.</span>";
     } else {
+        // Handle file upload
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $fileTmpPath = $_FILES['image']['tmp_name'];
+            $fileName = $_FILES['image']['name'];
+            $fileSize = $_FILES['image']['size'];
+            $fileType = $_FILES['image']['type'];
+            $fileNameCmps = explode(".", $fileName);
+            $fileExtension = strtolower(end($fileNameCmps));
+
+            // Validate file type and size
+            $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
+            if (in_array($fileExtension, $allowedfileExtensions) && $fileSize < 2000000) { // 2MB limit
+                // Directory to save uploaded file
+                $uploadFileDir = '../images/';
+                $dest_path = $uploadFileDir . $fileName;
+
+                // Move the file to the directory
+                if(move_uploaded_file($fileTmpPath, $dest_path)) {
+                    $imagePath = $dest_path; // Store the image path
+                } else {
+                    $feedback = "<span style='color:red;'>Error moving the uploaded file.</span>";
+                }
+            } else {
+                $feedback = "<span style='color:red;'>Upload failed. Allowed file types: " . implode(", ", $allowedfileExtensions) . " and size must be less than 2MB.</span>";
+            }
+        }
+
         // Create connection
         $mysqli = new mysqli($host, $user, $pass, $database);
 
@@ -26,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $feedback = "<span style='color:red;'>Database connection failed: " . $mysqli->connect_error . "</span>";
         } else {
             // Prepare and bind to the correct table
-            $stmt = $mysqli->prepare("INSERT INTO teachers (name, subject, mobil, email, password) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssss", $name, $subject, $mobil, $email, $password);
+            $stmt = $mysqli->prepare("INSERT INTO teachers (name, subject, mobil, email, password, image) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssss", $name, $subject, $mobil, $email, $password, $imagePath);
 
             // Execute the statement
             if ($stmt->execute()) {
@@ -48,7 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <main> 
     <h1 class = "add-teacher";>Add New Teacher</h1>
     <div class="form-container">
-        <form method="POST" action="">
+        <form method="POST" action="" enctype="multipart/form-data">
+
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
             <br>
@@ -64,9 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <br>
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+            <br>
             <input type="submit" value="Add Teacher">
+
         </form>
         <?php if (!empty($feedback)) echo $feedback; ?>
     </div>
 </main>
-
