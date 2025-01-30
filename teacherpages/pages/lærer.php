@@ -1,7 +1,3 @@
-<header>
-    <h1>Our Teachers</h1>
-    <a href="pages/add_teacher.php" class="add-teacher-button">Add New Teacher</a> <!-- Button to add teacher -->
-</header>
 <main>
     <section class="teachers">
         <?php
