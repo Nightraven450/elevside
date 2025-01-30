@@ -21,7 +21,7 @@
             }
             ?>
         </button>
-        <button onclick="location.href='index.php?p=2&page=karakter'">
+        <button onclick="location.href='index.php?p=2&page=grades'">
             <?php
             if (isset($_GET["p"]) && $_GET["p"] == 2) {
                 echo "<strong>Karakter</strong>";
