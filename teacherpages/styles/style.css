@@ -4,6 +4,7 @@ body {
     padding: 0;
     height: 100vh;
     width: 100vw;
+    overflow: hidden; /* Prevent scroll bars */
 }
 .nav {
     background-color: #544c9c;
@@ -26,9 +27,11 @@ body {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 90%; /* Changed to percentage for responsiveness */
+    max-width: 400px; /* Set a max width */
     padding: 20px;
-    margin: 50px auto; /* Center the form container */
+    margin: 10px auto; /* Center the form container */
+    overflow: hidden; /* Prevent overflow */
 }
 .header {
     background-color: #007bff;
@@ -36,6 +39,9 @@ body {
     padding: 10px;
     text-align: center;
     border-radius: 8px 8px 8px 8px; /* Rounded top corners */
+}
+h1 {
+    text-align: center; /* Center the heading */
 }
 label {
     display: block; /* Ensure labels are block elements */
