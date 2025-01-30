@@ -50,16 +50,22 @@ h1 {
 
 label {
     display: block; /* Ensure labels are block elements */
-    margin-bottom: 5px; /* Space between label and input */
+    margin-bottom: 2px; /* Reduced space between label and input */
+}
+
+.subject-input {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between label and input */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 15px; /* Space between inputs */
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"] {
-    width: 94%; /* Make inputs full width */
+    width: 92%; /* Keep width at 92% */
     padding: 7px; /* Add padding for better appearance */
-    margin-bottom: 15px; /* Space between inputs */
     border: 1px solid #ccc; /* Add border for visibility */
     border-radius: 4px; /* Rounded corners */
 }
