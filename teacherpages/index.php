@@ -11,3 +11,4 @@ if (file_exists("pages/$page.php")) {
 }
 
 include_once("includes/footer.php");
+
