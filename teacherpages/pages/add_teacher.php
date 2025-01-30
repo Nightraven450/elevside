@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Execute the statement
             if ($stmt->execute()) {
                 // Redirect to the correct page to prevent resubmission
-                header("Location: index.php?p=1&page=lærer");
+                header("Location: index.php?p=3&page=lærer");
                 exit;
             } else {
                 $feedback = "<span style='color:red;'>Error: " . $stmt->error . "</span>";
